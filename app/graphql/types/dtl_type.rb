@@ -13,7 +13,7 @@ module Types
     field :creator_id, String, null: true
     field :creator_name, String, null: true
     field :title, String, null: true
-    field :discription, String, null: true
+    field :description, String, null: true
     field :content, String, null: true
     field :media_meta, GraphQL::Types::JSON, null: true
     field :system_meta, GraphQL::Types::JSON, null: true

@@ -12,7 +12,7 @@ class CreateDtls < ActiveRecord::Migration[6.0]
       t.string :creator_id
       t.string :creator_name
       t.string :title
-      t.string :discription
+      t.string :description
       t.text :content
       t.jsonb :media_meta
       t.jsonb :system_meta

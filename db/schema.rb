@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2020_09_04_070433) do
     t.string "creator_id"
     t.string "creator_name"
     t.string "title"
-    t.string "discription"
+    t.string "description"
     t.text "content"
     t.jsonb "media_meta"
     t.jsonb "system_meta"

@@ -8,6 +8,10 @@ development:
   <<: *default
   database: db-dtl_development
 
+test:
+  <<: *default
+  database: db-dtl_test
+
 ct:
   adapter: postgresql
   encoding: unicode

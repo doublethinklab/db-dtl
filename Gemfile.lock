@@ -209,6 +209,10 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
+    search_object (1.2.4)
+    search_object_graphql (0.3.2)
+      graphql (~> 1.8)
+      search_object (~> 1.2.2)
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
@@ -273,6 +277,7 @@ DEPENDENCIES
   rails_admin (~> 2.0)
   rufus-scheduler
   sass-rails (>= 6)
+  search_object_graphql
   selenium-webdriver
   spring
   spring-watcher-listen (~> 2.0.0)

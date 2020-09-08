@@ -13,6 +13,8 @@ module Types
       argument :id, ID, required: true
     end
   
+    field :all_dtls, resolver: Resolvers::DtlsSearch
+
     # Then provide an implementation:
     def get_dtl(id:)
       Dtl.find(id)

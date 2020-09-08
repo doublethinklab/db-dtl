@@ -27,6 +27,17 @@ class Resolvers::DtlsSearch
     scope.order 'pub_time DESC'
   end
 
+  option :first, type: types.Int, with: :apply_first
+  option :skip, type: types.Int, with: :apply_skip
+
+  def apply_first(scope, value)
+    scope.limit(value)
+  end
+
+  def apply_skip(scope, value)
+    scope.offset(value)
+  end
+
   # scope is starting point for search
   scope { Dtl.all }
 

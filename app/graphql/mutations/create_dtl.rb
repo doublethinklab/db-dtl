@@ -13,7 +13,6 @@ class Mutations::CreateDtl < Mutations::BaseMutation
   argument :content, String, required: false
   argument :media_meta, String, required: false
   argument :system_meta, String, required: false
-  argument :pub_time, String, required: false
 
   field :dtl, Types::DtlType, null: false
   field :errors, [String], null: false

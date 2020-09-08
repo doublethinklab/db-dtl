@@ -5,6 +5,28 @@ class Resolvers::DtlsSearch
   # include SearchObject for GraphQL
   include SearchObject.module(:graphql)
 
+  OrderEnum = GraphQL::EnumType.define do
+    name 'DtlOrder'
+
+    value 'RECENT'
+    value 'UPDATED'
+    value 'PUBLISHED'
+  end
+
+  option :order, type: OrderEnum, default: 'RECENT'
+
+  def apply_order_with_recent(scope)
+    scope.order 'created_at DESC'
+  end
+
+  def apply_order_with_updated(scope)
+    scope.order 'updated_at DESC'
+  end  
+
+  def apply_order_with_published(scope)
+    scope.order 'pub_time DESC'
+  end
+
   # scope is starting point for search
   scope { Dtl.all }
 

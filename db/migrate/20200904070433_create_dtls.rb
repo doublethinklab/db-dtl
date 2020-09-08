@@ -2,7 +2,7 @@ class CreateDtls < ActiveRecord::Migration[6.0]
   def change
     create_table :dtls do |t|
       t.string :source
-      t.uuid :uuid
+      t.string :uuid
       t.string :url
       t.string :platform_id
       t.string :link

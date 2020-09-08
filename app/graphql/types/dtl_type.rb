@@ -1,8 +1,8 @@
 module Types
   class DtlType < Types::BaseObject
     description "A Dtl Raw Data"
+    field :source, String, null: true
     field :id, ID, null: false
-    field :title, String, null: true
     field :uuid, String, null: false
     field :url, String, null: true
     field :platform_id, String, null: true

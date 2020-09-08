@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2020_09_04_070433) do
 
   create_table "dtls", force: :cascade do |t|
     t.string "source"
-    t.uuid "uuid"
+    t.string "uuid"
     t.string "url"
     t.string "platform_id"
     t.string "link"

@@ -13,8 +13,20 @@ class Resolvers::DtlsSearch
   # inline input type definition for the advanced filter
   class DtlFilter < ::Types::BaseInputObject
     argument :OR, [self], required: false
-    argument :description_contains, String, required: false
+    argument :source_contains, String, required: false
+    argument :id_contains, ID, required: false
+    argument :uuid_contains, String, required: false
     argument :url_contains, String, required: false
+    argument :platform_id_contains, String, required: false
+    argument :link_contains, String, required: false
+    argument :domain_contains, String, required: false
+    argument :channel_id_contains, String, required: false
+    argument :channel_name_contains, String, required: false
+    argument :creator_id_contains, String, required: false
+    argument :creator_name_contains, String, required: false
+    argument :title_contains, String, required: false
+    argument :description_contains, String, required: false
+    argument :content_contains, String, required: false 
   end
 
   # when "filter" is passed "apply_filter" would be called to narrow the scope
@@ -28,8 +40,20 @@ class Resolvers::DtlsSearch
 
   def normalize_filters(value, branches = [])
     scope = Dtl.all
-    scope = scope.where('description LIKE ?', "%#{value[:description_contains]}%") if value[:description_contains]
+    scope = scope.where('description LIKE ?', "%#{value[:source_contains]}%") if value[:description_contains]
+    scope = scope.where('id = ?', "#{value[:id_contains]}") if value[:id_contains]
+    scope = scope.where('uuid = ?', "#{value[:uuid_contains]}") if value[:uuid_contains]
     scope = scope.where('url LIKE ?', "%#{value[:url_contains]}%") if value[:url_contains]
+    scope = scope.where('platform_id = ?', "%{value[:platform_id_contains]}") if value[:platform_id_contains]
+    scope = scope.where('link LIKE ?', "%#{value[:link_contains]}%") if value[:link_contains]
+    scope = scope.where('domain LIKE ?', "%#{value[:domain_contains]}%") if value[:domain_contains]
+    scope = scope.where('channel_id = ?', "#{value[:channel_id_contains]}") if value[:channel_id_contains]
+    scope = scope.where('channel_name LIKE ?', "%#{value[:channel_name_contains]}%") if value[:channel_name_contains]
+    scope = scope.where('creator_id = ?', "#{value[:creator_id_contains]}") if value[:creator_id_contains]
+    scope = scope.where('creator_name LIKE ?', "%#{value[:creator_name_contains]}%") if value[:creator_name_contains]
+    scope = scope.where('title LIKE ?', "%#{value[:title_contains]}%") if value[:title_contains]
+    scope = scope.where('description LIKE ?', "%#{value[:description_contains]}%") if value[:description_contains]
+    scope = scope.where('content LIKE ?', "%#{value[:content_contains]}%") if value[:content_contains]
 
     branches << scope
 

@@ -48,7 +48,8 @@ class Mutations::CreateDtl < Mutations::BaseMutation
       content: content,
       media_meta: media_meta,
       system_meta: system_meta
-    ) if context[:current_user]
+    )
+    #  if context[:current_user]
     
     if dtl
       {

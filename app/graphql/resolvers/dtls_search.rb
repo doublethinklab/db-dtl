@@ -60,6 +60,7 @@ class Resolvers::DtlsSearch
     argument :title_contains, String, required: false
     argument :description_contains, String, required: false
     argument :content_contains, String, required: false 
+    argument :label_contains, String, required: false 
   end
 
   # when "filter" is passed "apply_filter" would be called to narrow the scope
@@ -87,6 +88,13 @@ class Resolvers::DtlsSearch
     scope = scope.where('title LIKE ?', "%#{value[:title_contains]}%") if value[:title_contains]
     scope = scope.where('description LIKE ?', "%#{value[:description_contains]}%") if value[:description_contains]
     scope = scope.where('content LIKE ?', "%#{value[:content_contains]}%") if value[:content_contains]
+
+    if value[:label_contains]
+      label = Label.find_by(name: value[:label_contains])
+      scope = scope.where('domain = ?', "#{label.domain}") if label.domain
+      scope = scope.where('channel_id = ?', "#{label.channel_id}") if label.channel_id 
+      scope = scope.where('creator_id = ?', "#{label.creator_id}") if label.creator_id
+    end
 
     branches << scope
 

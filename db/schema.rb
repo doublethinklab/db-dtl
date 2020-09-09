@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 2020_09_09_082400) do
 
   create_table "labels", force: :cascade do |t|
     t.string "uuid"
-    t.string "tag"
+    t.string "name"
     t.string "domain"
     t.string "channel_id"
     t.string "creator_id"

@@ -1,0 +1,2 @@
+class DocumentTokenCount < ApplicationRecord
+end

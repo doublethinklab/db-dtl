@@ -10,10 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_09_052045) do
+ActiveRecord::Schema.define(version: 2020_09_09_082400) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "document_lexical_category_counts", force: :cascade do |t|
+    t.string "uuid"
+    t.string "lexical_category"
+    t.integer "count"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "document_token_counts", force: :cascade do |t|
+    t.string "uuid"
+    t.string "token"
+    t.integer "count"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "dtls", force: :cascade do |t|
     t.string "source"
@@ -32,6 +48,16 @@ ActiveRecord::Schema.define(version: 2020_09_09_052045) do
     t.jsonb "media_meta"
     t.jsonb "system_meta"
     t.datetime "pub_time"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "labels", force: :cascade do |t|
+    t.string "uuid"
+    t.string "tag"
+    t.string "domain"
+    t.string "channel_id"
+    t.string "creator_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

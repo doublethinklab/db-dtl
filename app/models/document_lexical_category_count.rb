@@ -1,0 +1,2 @@
+class DocumentLexicalCategoryCount < ApplicationRecord
+end

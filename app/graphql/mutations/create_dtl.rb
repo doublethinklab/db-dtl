@@ -33,7 +33,7 @@ class Mutations::CreateDtl < Mutations::BaseMutation
     media_meta: nil,
     system_meta: nil
     )
-    dtl = Dtl.new(
+    dtl = Dtl.create!(
       source: source,
       url: url,
       platform_id: platform_id,
@@ -48,8 +48,9 @@ class Mutations::CreateDtl < Mutations::BaseMutation
       content: content,
       media_meta: media_meta,
       system_meta: system_meta
-    )
-    if dtl.save
+    ) if context[:current_user]
+    
+    if dtl
       {
         dtl: dtl,
         errors: []

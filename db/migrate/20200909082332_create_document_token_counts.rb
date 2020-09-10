@@ -7,5 +7,6 @@ class CreateDocumentTokenCounts < ActiveRecord::Migration[6.0]
 
       t.timestamps
     end
+    add_index :document_token_counts, :uuid
   end
 end

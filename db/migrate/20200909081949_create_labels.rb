@@ -9,5 +9,11 @@ class CreateLabels < ActiveRecord::Migration[6.0]
 
       t.timestamps
     end
+    
+    add_index :labels, :uuid
+    add_index :labels, :name
+    add_index :labels, :domain
+    add_index :labels, :channel_id
+    add_index :labels, :creator_id
   end
 end

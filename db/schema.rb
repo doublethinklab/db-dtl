@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2020_09_09_082400) do
     t.integer "count"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["uuid"], name: "index_document_lexical_category_counts_on_uuid"
   end
 
   create_table "document_token_counts", force: :cascade do |t|
@@ -29,6 +30,7 @@ ActiveRecord::Schema.define(version: 2020_09_09_082400) do
     t.integer "count"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["uuid"], name: "index_document_token_counts_on_uuid"
   end
 
   create_table "dtls", force: :cascade do |t|
@@ -50,6 +52,13 @@ ActiveRecord::Schema.define(version: 2020_09_09_082400) do
     t.datetime "pub_time"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["channel_id"], name: "index_dtls_on_channel_id"
+    t.index ["creator_id"], name: "index_dtls_on_creator_id"
+    t.index ["domain"], name: "index_dtls_on_domain"
+    t.index ["platform_id"], name: "index_dtls_on_platform_id"
+    t.index ["pub_time"], name: "index_dtls_on_pub_time"
+    t.index ["url"], name: "index_dtls_on_url"
+    t.index ["uuid"], name: "index_dtls_on_uuid"
   end
 
   create_table "labels", force: :cascade do |t|
@@ -60,6 +69,11 @@ ActiveRecord::Schema.define(version: 2020_09_09_082400) do
     t.string "creator_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["channel_id"], name: "index_labels_on_channel_id"
+    t.index ["creator_id"], name: "index_labels_on_creator_id"
+    t.index ["domain"], name: "index_labels_on_domain"
+    t.index ["name"], name: "index_labels_on_name"
+    t.index ["uuid"], name: "index_labels_on_uuid"
   end
 
   create_table "users", force: :cascade do |t|

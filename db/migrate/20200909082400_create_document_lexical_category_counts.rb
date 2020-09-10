@@ -7,5 +7,6 @@ class CreateDocumentLexicalCategoryCounts < ActiveRecord::Migration[6.0]
 
       t.timestamps
     end
+    add_index :document_lexical_category_counts, :uuid
   end
 end

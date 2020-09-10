@@ -20,6 +20,14 @@ class CreateDtls < ActiveRecord::Migration[6.0]
 
       t.timestamps
     end
+    
+    add_index :dtls, :uuid
+    add_index :dtls, :url
+    add_index :dtls, :platform_id
+    add_index :dtls, :domain
+    add_index :dtls, :channel_id
+    add_index :dtls, :creator_id
+    add_index :dtls, :pub_time
   end
 end
 

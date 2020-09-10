@@ -1,22 +1,8 @@
-default: &default
-  username: <%= ENV['RDS_USERNAME'] %>
-  adapter: postgresql
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 25 } %>
-  timeout: 30000
-
 development:
-  <<: *default
-  database: db-dtl_development
-
-test:
-  <<: *default
-  database: db-dtl_test
-
-ct:
   adapter: postgresql
   encoding: unicode
-  database: db-dtl_production
+  database: db-dtl_development
   pool: 5
-  host: <%= ENV['DBHOST'] %>
-  username: <%= ENV['DBUSER'] %>
-  password: <%= ENV['DBPWD'] %>
+  host: <%= ENV['DTLDBHOST'] %>
+  username: <%= ENV['DTLDBUSER'] %>
+  password: <%= ENV['DTLDBPWD'] %>  

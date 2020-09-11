@@ -61,6 +61,7 @@ class Resolvers::DtlsSearch
     argument :description_contains, String, required: false
     argument :content_contains, String, required: false 
     argument :label_contains, String, required: false 
+    argument :text_contains, String, required: false 
   end
 
   # when "filter" is passed "apply_filter" would be called to narrow the scope
@@ -98,6 +99,10 @@ class Resolvers::DtlsSearch
       else 
         scope = Dtl.none
       end
+    end
+
+    if value[:text_contains]
+      scope = scope.where('channel_name LIKE ? OR creator_name LIKE ? OR title LIKE ? OR description LIKE ? OR content LIKE ?', "%#{value[:text_contains]}%", "%#{value[:text_contains]}%", "%#{value[:text_contains]}%", "%#{value[:text_contains]}%", "%#{value[:text_contains]}%")
     end
 
     branches << scope

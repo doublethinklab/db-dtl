@@ -13,6 +13,7 @@ class Mutations::CreateDtl < Mutations::BaseMutation
   argument :content, String, required: false
   argument :media_meta, String, required: false
   argument :system_meta, String, required: false
+  argument :pub_time, String, required: false
 
   field :dtl, Types::DtlType, null: false
   field :errors, [String], null: false
@@ -31,7 +32,8 @@ class Mutations::CreateDtl < Mutations::BaseMutation
     description: nil,
     content: nil,
     media_meta: nil,
-    system_meta: nil
+    system_meta: nil,
+    pub_time: nil
     )
     dtl = Dtl.create!(
       source: source,
@@ -47,7 +49,8 @@ class Mutations::CreateDtl < Mutations::BaseMutation
       description: description,
       content: content,
       media_meta: media_meta,
-      system_meta: system_meta
+      system_meta: system_meta,
+      pub_time: pub_time,
     )
     #  if context[:current_user]
     

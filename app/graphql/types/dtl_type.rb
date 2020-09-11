@@ -17,7 +17,7 @@ module Types
     field :content, String, null: true
     field :media_meta, GraphQL::Types::JSON, null: true
     field :system_meta, GraphQL::Types::JSON, null: true
-    field :pub_time, GraphQL::Types::ISO8601DateTime, null: true
+    field :pub_time, String, null: true
     field :created_at, GraphQL::Types::ISO8601DateTime, null: false
     field :updated_at, GraphQL::Types::ISO8601DateTime, null: false
   end

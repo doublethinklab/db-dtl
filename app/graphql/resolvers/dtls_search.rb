@@ -90,10 +90,12 @@ class Resolvers::DtlsSearch
     scope = scope.where('content LIKE ?', "%#{value[:content_contains]}%") if value[:content_contains]
 
     if value[:label_contains]
-      label = Label.find_by(name: value[:label_contains])
-      scope = scope.where('domain LIKE ?', "%#{label.domain}%") if label.domain
-      scope = scope.where('channel_id = ?', "#{label.channel_id}") if label.channel_id 
-      scope = scope.where('creator_id = ?', "#{label.creator_id}") if label.creator_id
+      label = Label.find_by(name: value[:label_contains]) 
+      if label
+        scope = scope.where('domain LIKE ?', "%#{label.domain}%") if label.domain
+        scope = scope.where('channel_id = ?', "#{label.channel_id}") if label.channel_id 
+        scope = scope.where('creator_id = ?', "#{label.creator_id}") if label.creator_id
+      end
     end
 
     branches << scope

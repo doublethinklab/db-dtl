@@ -95,6 +95,8 @@ class Resolvers::DtlsSearch
         scope = scope.where('domain LIKE ?', "%#{label.domain}%") if label.domain
         scope = scope.where('channel_id = ?', "#{label.channel_id}") if label.channel_id 
         scope = scope.where('creator_id = ?', "#{label.creator_id}") if label.creator_id
+      else 
+        scope = Dtl.none
       end
     end
 

@@ -22,7 +22,7 @@ class CreateDtls < ActiveRecord::Migration[6.0]
     end
     
     add_index :dtls, :uuid
-    add_index :dtls, :url
+    add_index :dtls, :url, unique: true
     add_index :dtls, :platform_id
     add_index :dtls, :domain
     add_index :dtls, :channel_id

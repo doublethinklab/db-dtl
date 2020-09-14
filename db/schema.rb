@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 2020_09_09_082400) do
     t.index ["domain"], name: "index_dtls_on_domain"
     t.index ["platform_id"], name: "index_dtls_on_platform_id"
     t.index ["pub_time"], name: "index_dtls_on_pub_time"
-    t.index ["url"], name: "index_dtls_on_url"
+    t.index ["url"], name: "index_dtls_on_url", unique: true
     t.index ["uuid"], name: "index_dtls_on_uuid"
   end
 

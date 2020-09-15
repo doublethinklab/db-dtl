@@ -102,7 +102,10 @@ class Resolvers::DtlsSearch
     end
 
     if value[:text_contains]
-      scope = scope.where('channel_name LIKE ? OR creator_name LIKE ? OR title LIKE ? OR description LIKE ? OR content LIKE ?', "%#{value[:text_contains]}%", "%#{value[:text_contains]}%", "%#{value[:text_contains]}%", "%#{value[:text_contains]}%", "%#{value[:text_contains]}%")
+      scope = scope.where('search = ?', "#{value[:search_contains]}") 
+      if scope.count == 0
+        scope = scope.where('channel_name LIKE ? OR creator_name LIKE ? OR title LIKE ? OR description LIKE ? OR content LIKE ?', "%#{value[:text_contains]}%", "%#{value[:text_contains]}%", "%#{value[:text_contains]}%", "%#{value[:text_contains]}%", "%#{value[:text_contains]}%")
+      end
     end
 
     branches << scope

@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 2020_09_09_082400) do
     t.string "creator_name"
     t.string "title"
     t.string "description"
+    t.string "search"
     t.text "content"
     t.jsonb "media_meta"
     t.jsonb "system_meta"

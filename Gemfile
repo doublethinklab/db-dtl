@@ -33,6 +33,7 @@ gem 'rails_admin', '~> 2.0'
 gem 'graphql'
 gem 'search_object_graphql'
 gem 'bcrypt', '~> 3.1.13'
+gem 'rails_admin', '~> 2.0'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false

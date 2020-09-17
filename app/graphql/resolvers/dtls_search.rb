@@ -63,6 +63,7 @@ class Resolvers::DtlsSearch
     argument :label_contains, String, required: false 
     argument :text_contains, String, required: false 
     argument :search_contains, String, required: false 
+    argument :pub_time_contains, String, required: false 
   end
 
   # when "filter" is passed "apply_filter" would be called to narrow the scope
@@ -76,6 +77,14 @@ class Resolvers::DtlsSearch
 
   def normalize_filters(value, branches = [])
     scope = Dtl.all
+
+    if value[:pub_time_contains]
+      t=value[:pub_time_contains].split('xxx')
+      s=t[0].to_date
+      e=t[1].to_date
+      scope = scope.where(pub_time: s..e)
+    end
+    
     scope = scope.where('source = ?', "#{value[:source_contains]}") if value[:source_contains]
     scope = scope.where('id = ?', "#{value[:id_contains]}") if value[:id_contains]
     scope = scope.where('uuid = ?', "#{value[:uuid_contains]}") if value[:uuid_contains]

@@ -76,7 +76,7 @@ class Resolvers::DtlsSearch
 
   def normalize_filters(value, branches = [])
     scope = Dtl.all
-    scope = scope.where('description LIKE ?', "%#{value[:source_contains]}%") if value[:description_contains]
+    scope = scope.where('source = ?', "#{value[:source_contains]}") if value[:source_contains]
     scope = scope.where('id = ?', "#{value[:id_contains]}") if value[:id_contains]
     scope = scope.where('uuid = ?', "#{value[:uuid_contains]}") if value[:uuid_contains]
     scope = scope.where('url LIKE ?', "%#{value[:url_contains]}%") if value[:url_contains]

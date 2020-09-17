@@ -11,8 +11,8 @@ class CreateDtls < ActiveRecord::Migration[6.0]
       t.string :channel_name
       t.string :creator_id
       t.string :creator_name
-      t.string :title
-      t.string :description
+      t.text :title
+      t.text :description
       t.string :search
       t.text :content
       t.jsonb :media_meta

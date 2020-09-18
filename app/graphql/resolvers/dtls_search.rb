@@ -81,7 +81,7 @@ class Resolvers::DtlsSearch
     if value[:pub_time_contains]
       t=value[:pub_time_contains].split('xxx')
       s=t[0].to_date
-      e=t[1].to_date
+      e=t[1].to_date + 1.day
       scope = scope.where(pub_time: s..e)
     end
     

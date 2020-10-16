@@ -64,6 +64,8 @@ class Resolvers::DtlsSearch
     argument :text_contains, String, required: false 
     argument :search_contains, String, required: false 
     argument :pub_time_contains, String, required: false 
+    argument :pub_time_start_date, String, required: false 
+    argument :pub_time_end_date, String, required: false 
   end
 
   # when "filter" is passed "apply_filter" would be called to narrow the scope
@@ -84,7 +86,8 @@ class Resolvers::DtlsSearch
       e=t[1].to_date + 1.day
       scope = scope.where(pub_time: s..e)
     end
-    
+
+    scope = scope.where(pub_time: value[:pub_time_start_date].to_datetime.beginning_of_day..value[:pub_time_end_date].to_datetime.end_of_day) if (value[:pub_time_start_date] && value[:pub_time_end_date])
     scope = scope.where('source = ?', "#{value[:source_contains]}") if value[:source_contains]
     scope = scope.where('id = ?', "#{value[:id_contains]}") if value[:id_contains]
     scope = scope.where('uuid = ?', "#{value[:uuid_contains]}") if value[:uuid_contains]

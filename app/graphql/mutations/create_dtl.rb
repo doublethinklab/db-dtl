@@ -29,9 +29,9 @@ class Mutations::CreateDtl < Mutations::BaseMutation
     channel_name: nil,
     creator_id: nil,
     creator_name: nil,
-    title: nil,
-    description: nil,
-    content: nil,
+    title: '',
+    description: '',
+    content: '',
     media_meta: nil,
     system_meta: nil,
     pub_time: nil,
@@ -56,7 +56,7 @@ class Mutations::CreateDtl < Mutations::BaseMutation
       search: search,
     )
     #  if context[:current_user]
-    
+
     if dtl
       {
         dtl: dtl,

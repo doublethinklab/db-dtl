@@ -1,8 +1,8 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: db-dtl_development
+  database: <%= ENV['DBNAME'] %>
   pool: 5
   host: <%= ENV['DTLDBHOST'] %>
   username: <%= ENV['DTLDBUSER'] %>
-  password: <%= ENV['DTLDBPWD'] %>  
+  password: <%= ENV['DTLDBPWD'] %>

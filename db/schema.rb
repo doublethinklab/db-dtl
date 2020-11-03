@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_03_022057) do
+ActiveRecord::Schema.define(version: 2020_11_03_024827) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 2020_11_03_022057) do
     t.index ["channel_id"], name: "index_dtls_on_channel_id"
     t.index ["creator_id"], name: "index_dtls_on_creator_id"
     t.index ["domain"], name: "index_dtls_on_domain"
+    t.index ["language"], name: "index_dtls_on_language"
     t.index ["platform_id"], name: "index_dtls_on_platform_id"
     t.index ["pub_time"], name: "index_dtls_on_pub_time"
     t.index ["search"], name: "index_dtls_on_search"

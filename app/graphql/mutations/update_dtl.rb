@@ -4,6 +4,7 @@ class Mutations::UpdateDtl < Mutations::BaseMutation
   argument :content, String, required: false
   argument :description, String, required: false
   argument :pub_time, String, required: false
+  argument :language, String, required: false
 
   field :dtl, Types::DtlType, null: false
   field :errors, [String], null: false

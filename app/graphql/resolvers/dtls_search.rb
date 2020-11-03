@@ -21,7 +21,7 @@ class Resolvers::DtlsSearch
 
   def apply_order_with_updated(scope)
     scope.order 'updated_at DESC'
-  end  
+  end
 
   def apply_order_with_published(scope)
     scope.order 'pub_time DESC'
@@ -59,13 +59,14 @@ class Resolvers::DtlsSearch
     argument :creator_name_contains, String, required: false
     argument :title_contains, String, required: false
     argument :description_contains, String, required: false
-    argument :content_contains, String, required: false 
-    argument :label_contains, String, required: false 
-    argument :text_contains, String, required: false 
-    argument :search_contains, String, required: false 
-    argument :pub_time_contains, String, required: false 
-    argument :pub_time_start_date, String, required: false 
-    argument :pub_time_end_date, String, required: false 
+    argument :content_contains, String, required: false
+    argument :label_contains, String, required: false
+    argument :text_contains, String, required: false
+    argument :language_contains, String, required: false
+    argument :search_contains, String, required: false
+    argument :pub_time_contains, String, required: false
+    argument :pub_time_start_date, String, required: false
+    argument :pub_time_end_date, String, required: false
   end
 
   # when "filter" is passed "apply_filter" would be called to narrow the scope
@@ -103,6 +104,7 @@ class Resolvers::DtlsSearch
     scope = scope.where('description LIKE ?', "%#{value[:description_contains]}%") if value[:description_contains]
     scope = scope.where('content LIKE ?', "%#{value[:content_contains]}%") if value[:content_contains]
     scope = scope.where('search LIKE ?', "%#{value[:search_contains]}%") if value[:search_contains]
+    scope = scope.where('language LIKE ?', "%#{value[:language_contains]}%") if value[:language_contains]
 
     if value[:label_contains]
       label = Label.find_by(name: value[:label_contains]) 
@@ -110,7 +112,7 @@ class Resolvers::DtlsSearch
         scope = scope.where('domain LIKE ?', "%#{label.domain}%") if label.domain
         scope = scope.where('channel_id = ?', "#{label.channel_id}") if label.channel_id 
         scope = scope.where('creator_id = ?', "#{label.creator_id}") if label.creator_id
-      else 
+      else
         scope = Dtl.none
       end
     end

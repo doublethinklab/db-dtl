@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_09_082400) do
+ActiveRecord::Schema.define(version: 2020_11_03_022057) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 2020_09_09_082400) do
     t.datetime "pub_time"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "language"
     t.index ["channel_id"], name: "index_dtls_on_channel_id"
     t.index ["creator_id"], name: "index_dtls_on_creator_id"
     t.index ["domain"], name: "index_dtls_on_domain"

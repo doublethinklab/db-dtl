@@ -3,7 +3,7 @@ module Types
     description "The query root of this schema"
 
     field :list_dtls, [Types::DtlType], null: true do
-      description "Returns a list of products in fashion store"
+      description "Returns DTL datas"
       argument :text, String, required: true
     end
 
@@ -12,7 +12,7 @@ module Types
       description "Find a Dtl by ID"
       argument :id, ID, required: true
     end
-  
+
     field :all_dtls, resolver: Resolvers::DtlsSearch
 
     # Then provide an implementation:
@@ -23,5 +23,7 @@ module Types
     def list_dtls(text:)
       Dtl.where("content LIKE ?", "%#{text}%")
     end
+
+    field :all_days, resolver: Resolvers::DaysSearch
   end
 end

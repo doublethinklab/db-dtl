@@ -1,5 +1,5 @@
 class Dtl < ApplicationRecord
-  validates :url, uniqueness: true
+  validates :url, uniqueness: true, presence: true
 
   before_save :set_uuid
   def set_uuid

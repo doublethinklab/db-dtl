@@ -10,10 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_03_024827) do
+ActiveRecord::Schema.define(version: 2020_11_04_090025) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "days", force: :cascade do |t|
+    t.string "domain"
+    t.string "channel_id"
+    t.string "creator_id"
+    t.string "date"
+    t.integer "num"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["channel_id"], name: "index_days_on_channel_id"
+    t.index ["creator_id"], name: "index_days_on_creator_id"
+    t.index ["date"], name: "index_days_on_date"
+    t.index ["domain"], name: "index_days_on_domain"
+    t.index ["num"], name: "index_days_on_num"
+  end
 
   create_table "document_lexical_category_counts", force: :cascade do |t|
     t.string "uuid"

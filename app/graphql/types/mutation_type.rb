@@ -1,5 +1,6 @@
 module Types
   class MutationType < Types::BaseObject
+    field :create_day, mutation: Mutations::CreateDay
     field :create_dtl, mutation: Mutations::CreateDtl
     field :update_dtl, mutation: Mutations::UpdateDtl
     field :create_user, mutation: Mutations::CreateUser

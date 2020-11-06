@@ -41,7 +41,7 @@ class Resolvers::DaysSearch
   # inline input type definition for the advanced filter
   class DayFilter < ::Types::BaseInputObject
     argument :OR, [self], required: false
-    argument :domain_contains, String, required: true
+    argument :domain_contains, String, required: false
     argument :start_date_is, String, required: true
     argument :end_date_is, String, required: true
     argument :creator_id_contains, String, required: false

@@ -1,6 +1,6 @@
 class Mutations::CreateDay < Mutations::BaseMutation
-  argument :domain, String, required: true
-  argument :date, String, required: true
+  argument :domain, String, required: false
+  argument :date, String, required: false
   argument :creator_id, String, required: false
   argument :channel_id, String, required: false
   argument :num, Int, required: false

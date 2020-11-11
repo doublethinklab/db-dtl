@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_04_090025) do
+ActiveRecord::Schema.define(version: 2020_11_11_024032) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2020_11_04_090025) do
     t.index ["channel_id"], name: "index_days_on_channel_id"
     t.index ["creator_id"], name: "index_days_on_creator_id"
     t.index ["date"], name: "index_days_on_date"
+    t.index ["domain", "creator_id", "date"], name: "index_days_on_domain_and_creator_id_and_date", unique: true
     t.index ["domain"], name: "index_days_on_domain"
     t.index ["num"], name: "index_days_on_num"
   end

@@ -2,7 +2,7 @@ development:
   adapter: postgresql
   encoding: unicode
   database: <%= ENV['DBNAME'] %>
-  pool: 5
+  pool: 100
   host: <%= ENV['DTLDBHOST'] %>
   username: <%= ENV['DTLDBUSER'] %>
   password: <%= ENV['DTLDBPWD'] %>

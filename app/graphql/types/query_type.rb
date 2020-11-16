@@ -13,6 +13,10 @@ module Types
       argument :id, ID, required: true
     end
 
+    field :all_twitters, [Types::TwitterType], null: true do
+      description "List all twitter accounts"
+    end
+
     field :all_dtls, resolver: Resolvers::DtlsSearch
 
     # Then provide an implementation:
@@ -25,5 +29,9 @@ module Types
     end
 
     field :all_days, resolver: Resolvers::DaysSearch
+
+    def all_twitters
+      Twitter.all
+    end
   end
 end

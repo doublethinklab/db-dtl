@@ -13,6 +13,15 @@ class Mutations::CreateTwitter < Mutations::BaseMutation
       source: source,
       creator_id: creator_id
     )
+    Thread.new do
+      begin
+        uri = URI("https://#{ENV['CTCSVHOST']}/first_twints")
+        Net::HTTP.get_response(uri).body.to_i
+      rescue => exception
+        p exception
+      end
+    end
+
     if twitter
       {
         twitter: twitter,

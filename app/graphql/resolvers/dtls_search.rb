@@ -49,7 +49,7 @@ class Resolvers::DtlsSearch
     argument :source_contains, String, required: false
     argument :id_contains, ID, required: false
     argument :uuid_contains, String, required: false
-    argument :url_contains, String, required: false
+    # argument :url_contains, String, required: false
     argument :platform_id_contains, String, required: false
     argument :link_contains, String, required: false
     argument :domain_contains, String, required: false
@@ -92,7 +92,7 @@ class Resolvers::DtlsSearch
     scope = scope.where('source = ?', "#{value[:source_contains]}") if value[:source_contains]
     scope = scope.where('id = ?', "#{value[:id_contains]}") if value[:id_contains]
     scope = scope.where('uuid = ?', "#{value[:uuid_contains]}") if value[:uuid_contains]
-    scope = scope.where('url LIKE ?', "%#{value[:url_contains]}%") if value[:url_contains]
+    # scope = scope.where('url LIKE ?', "%#{value[:url_contains]}%") if value[:url_contains]
     scope = scope.where('platform_id = ?', "%{value[:platform_id_contains]}") if value[:platform_id_contains]
     scope = scope.where('link LIKE ?', "%#{value[:link_contains]}%") if value[:link_contains]
     scope = scope.where('domain LIKE ?', "%#{value[:domain_contains]}%") if value[:domain_contains]

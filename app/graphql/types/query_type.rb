@@ -18,6 +18,7 @@ module Types
     end
 
     field :all_dtls, resolver: Resolvers::DtlsSearch
+    # field :all_searchwords, resolver: Resolvers::SearchwordsSearch
 
     # Then provide an implementation:
     def get_dtl(id:)

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_16_064504) do
+ActiveRecord::Schema.define(version: 2020_12_21_080437) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,13 +70,19 @@ ActiveRecord::Schema.define(version: 2020_11_16_064504) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "language"
+    t.string "original_source_name"
+    t.string "original_source_url"
+    t.string "original_source_check"
     t.index ["channel_id"], name: "index_dtls_on_channel_id"
     t.index ["creator_id"], name: "index_dtls_on_creator_id"
     t.index ["domain"], name: "index_dtls_on_domain"
     t.index ["language"], name: "index_dtls_on_language"
+    t.index ["original_source_check"], name: "index_dtls_on_original_source_check"
+    t.index ["original_source_name"], name: "index_dtls_on_original_source_name"
     t.index ["platform_id"], name: "index_dtls_on_platform_id"
     t.index ["pub_time"], name: "index_dtls_on_pub_time"
     t.index ["search"], name: "index_dtls_on_search"
+    t.index ["source"], name: "index_dtls_on_source"
     t.index ["url"], name: "index_dtls_on_url", unique: true
     t.index ["uuid"], name: "index_dtls_on_uuid"
   end

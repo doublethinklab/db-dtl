@@ -64,6 +64,9 @@ class Resolvers::DtlsSearch
     argument :text_contains, String, required: false
     argument :language_contains, String, required: false
     argument :search_contains, String, required: false
+    argument :original_source_name_contains, String, required: false
+    argument :original_source_url_contains, String, required: false
+    argument :original_source_check_contains, String, required: false
     argument :pub_time_contains, String, required: false
     argument :pub_time_start_date, String, required: false
     argument :pub_time_end_date, String, required: false
@@ -104,6 +107,9 @@ class Resolvers::DtlsSearch
     scope = scope.where('description LIKE ?', "%#{value[:description_contains]}%") if value[:description_contains]
     scope = scope.where('content LIKE ?', "%#{value[:content_contains]}%") if value[:content_contains]
     scope = scope.where('search LIKE ?', "%#{value[:search_contains]}%") if value[:search_contains]
+    scope = scope.where('original_source_name LIKE ?', "%#{value[:original_source_name_contains]}%") if value[:original_source_name_contains]
+    scope = scope.where('original_source_url LIKE ?', "%#{value[:original_source_url_contains]}%") if value[:original_source_url_contains]
+    scope = scope.where('original_source_check LIKE ?', "%#{value[:original_source_check_contains]}%") if value[:original_source_check_contains]
     scope = scope.where('language LIKE ?', "%#{value[:language_contains]}%") if value[:language_contains]
 
     if value[:label_contains]

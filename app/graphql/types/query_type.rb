@@ -13,6 +13,11 @@ module Types
       argument :id, ID, required: true
     end
 
+    # First describe the field signature:
+    field :all_domains, [Types::DomainType], null: true do
+      description "List all domains"
+    end
+
     field :all_twitters, [Types::TwitterType], null: true do
       description "List all twitter accounts"
     end
@@ -23,6 +28,10 @@ module Types
     # Then provide an implementation:
     def get_dtl(id:)
       Dtl.find(id)
+    end
+
+    def all_domains
+      Day.pluck(:domain).compact.uniq.sort.map{|x| {domain: x}}
     end
 
     def list_dtls(text:)

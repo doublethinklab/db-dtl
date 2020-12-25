@@ -1,10 +1,21 @@
 class Mutations::UpdateDtl < Mutations::BaseMutation
+  argument :source, String, required: false
   argument :url, String, required: true
+  argument :platform_id, String, required: false
+  argument :link, String, required: false
+  argument :domain, String, required: false
+  argument :channel_id, String, required: false
+  argument :channel_name, String, required: false
+  argument :creator_id, String, required: false
+  argument :creator_name, String, required: false
   argument :title, String, required: false
-  argument :content, String, required: false
   argument :description, String, required: false
+  argument :content, String, required: false
+  argument :media_meta, String, required: false
+  argument :system_meta, String, required: false
   argument :pub_time, String, required: false
   argument :language, String, required: false
+  argument :search, String, required: false
   argument :original_source_name, String, required: false
   argument :original_source_url, String, required: false
   argument :original_source_check, String, required: false
@@ -13,16 +24,29 @@ class Mutations::UpdateDtl < Mutations::BaseMutation
   field :errors, [String], null: false
 
   def resolve(
+    source: nil,
     url: nil,
+    platform_id: nil,
+    link: nil,
+    domain: nil,
+    channel_id: nil,
+    channel_name: nil,
+    creator_id: nil,
+    creator_name: nil,
     title: '',
     description: '',
     content: '',
+    media_meta: nil,
+    system_meta: nil,
     pub_time: nil,
+    language: nil,
+    search: nil,
     original_source_name: nil,
     original_source_url: nil,
     original_source_check: nil
   )
     dtl = Dtl.find_by(url: url)
+    if dtl
     dtl.update!(
       title: title.present? ? URI.decode_www_form_component(title) : dtl.title,
       description: description.present? ? URI.decode_www_form_component(description) : dtl.description,
@@ -32,6 +56,30 @@ class Mutations::UpdateDtl < Mutations::BaseMutation
       original_source_url: original_source_url,
       original_source_check: original_source_check
     )
+    else
+      dtl = Dtl.create!(
+        source: source,
+        url: url,
+        platform_id: platform_id,
+        link: link,
+        domain: domain,
+        channel_id: channel_id,
+        channel_name: channel_name,
+        creator_id: creator_id,
+        creator_name: creator_name,
+        title: URI.decode_www_form_component(title),
+        description: URI.decode_www_form_component(description),
+        content: URI.decode_www_form_component(content),
+        media_meta: media_meta,
+        system_meta: system_meta,
+        pub_time: pub_time,
+        language: language,
+        search: search,
+        original_source_name: original_source_name,
+        original_source_url: original_source_url,
+        original_source_check: original_source_check
+      )
+    end
 
     if dtl
       {

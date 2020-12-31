@@ -5,6 +5,7 @@ class Resolvers::DtlsSearch
   # include SearchObject for GraphQL
   include SearchObject.module(:graphql)
 
+
   OrderEnum = GraphQL::EnumType.define do
     name 'DtlOrder'
 
@@ -70,6 +71,7 @@ class Resolvers::DtlsSearch
     argument :pub_time_contains, String, required: false
     argument :pub_time_start_date, String, required: false
     argument :pub_time_end_date, String, required: false
+    argument :token, String, required: false
   end
 
   # when "filter" is passed "apply_filter" would be called to narrow the scope
@@ -82,6 +84,11 @@ class Resolvers::DtlsSearch
   end
 
   def normalize_filters(value, branches = [])
+    # if Apiuser.pluck(:token).include? value[:token]
+    #   scope = Dtl.all
+    # else
+    #   scope = Dtl.none
+    # end
     scope = Dtl.all
 
     if value[:pub_time_contains]

@@ -84,7 +84,10 @@ class Resolvers::DtlsSearch
   end
 
   def normalize_filters(value, branches = [])
-    # if Apiuser.pluck(:token).include? value[:token]
+    # allow_user = Apiuser.find_by(token: value[:token])
+    # if allow_user.present?
+    #   allow_user.usage += 1
+    #   allow_user.save
     #   scope = Dtl.all
     # else
     #   scope = Dtl.none
